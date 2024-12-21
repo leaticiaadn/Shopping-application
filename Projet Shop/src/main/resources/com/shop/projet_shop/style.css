@@ -1,0 +1,51 @@
+/* Style global pour le formulaire */
+.form-container {
+    -fx-padding: 20px; /* Espacement autour du formulaire */
+}
+
+/* Style des GridPane pour espacer les éléments */
+.grid-pane {
+    -fx-hgap: 10; /* Espacement horizontal entre les éléments du GridPane */
+    -fx-vgap: 15; /* Espacement vertical entre les éléments du GridPane */
+}
+
+/* Style des champs de texte (TextField, PasswordField) */
+.text-field, .password-field {
+    -fx-padding: 10px; /* Espacement interne dans les champs */
+    -fx-background-color: #f5f5f5; /* Fond légèrement gris */
+    -fx-border-radius: 5px;
+    -fx-border-color: #ddd; /* Bordure légère */
+    -fx-font-size: 14px; /* Taille du texte */
+}
+
+/* Style des boutons */
+.button {
+    -fx-background-color: #f9429e; /* Vert moderne */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-border: none;
+    -fx-transition: 0.3s;
+    -fx-margin-bottom: 10px; /* Espace entre les boutons */
+    -fx-font-weight: bold; /* Texte en gras */
+}
+
+.button:hover {
+    -fx-background-color: #f9429e; /* Changement de couleur au survol */
+}
+
+/* Espacement entre les boutons */
+.button-container {
+    -fx-spacing: 15px;
+}
+
+
+
+
+
+
+
+
+
+

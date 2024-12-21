@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.SVGPath?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.shop.projet_shop.AppController">
+    <children>
+        <BorderPane fx:id="contentPane" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+            <top>
+                <fx:include source="Header.fxml" />
+            </top>
+            <center>
+                <fx:include source="Content.fxml" />
+            </center>
+            <bottom>
+                <fx:include source="Footer.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>
