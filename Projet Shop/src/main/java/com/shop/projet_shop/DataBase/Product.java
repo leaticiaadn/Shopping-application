@@ -3,27 +3,35 @@ package com.shop.projet_shop.DataBase;
 import javafx.beans.property.*;
 
 public class Product {
+    private IntegerProperty id;
     private StringProperty name;
     private StringProperty description;
     private DoubleProperty price;
     private IntegerProperty stock;
     private StringProperty creationDate;
+    private String imagePath;
 
-    public Product(String name, String description, double price, int stock, String creationDate) {
+    public Product(int id,String name, String description, double price, int stock, String ImagePath) {
+        this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.price = new SimpleDoubleProperty(price);
         this.stock = new SimpleIntegerProperty(stock);
+        imagePath = ImagePath;
+    }
+
+    public Product(int id, String name, String description, double price, int stock, String creationDate,String ImagePath) {
+        this(id,name, description, price, stock,ImagePath);
         this.creationDate = new SimpleStringProperty(creationDate);
     }
 
-    public StringProperty nameProperty() {return name;}
-    public StringProperty descriptionProperty() {return description;}
-    public DoubleProperty priceProperty() {return price;}
-    public IntegerProperty stockProperty() {return stock;}
-    public StringProperty creationDateProperty() {return creationDate;}
-
     // Getters and setters pour les propriétés
+    public int getId() {
+        return id.get();
+    }
+    public void setId(int id) {
+        this.id.set(id);
+    }
     public String getName() {
         return name.get();
     }
@@ -62,5 +70,12 @@ public class Product {
 
     public void setCreationDate(String creationDate) {
         this.creationDate.set(creationDate);
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    public String getImagePath() {
+        return imagePath;
     }
 }

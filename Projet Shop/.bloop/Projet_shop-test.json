@@ -1,0 +1,875 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "Projet_shop-test",
+        "directory": "C:\\Users\\Leati\\OneDrive\\Documents\\Master1 MIAGE\\Programmation Objet\\Projet\\Shopping-application\\Projet Shop",
+        "workspaceDir": "C:\\Users\\Leati\\OneDrive\\Documents\\Master1 MIAGE\\Programmation Objet\\Projet\\Shopping-application\\Projet Shop",
+        "sources": [
+            
+        ],
+        "dependencies": [
+            "Projet_shop"
+        ],
+        "classpath": [
+            "C:\\Users\\Leati\\OneDrive\\Documents\\Master1 MIAGE\\Programmation Objet\\Projet\\Shopping-application\\Projet Shop\\target\\test-classes",
+            "C:\\Users\\Leati\\OneDrive\\Documents\\Master1 MIAGE\\Programmation Objet\\Projet\\Shopping-application\\Projet Shop\\target\\classes",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-controls\\21\\javafx-controls-21.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-controls\\21\\javafx-controls-21-win.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-graphics\\21\\javafx-graphics-21.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-graphics\\21\\javafx-graphics-21-win.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-base\\21\\javafx-base-21.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-base\\21\\javafx-base-21-win.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-fxml\\21\\javafx-fxml-21.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-fxml\\21\\javafx-fxml-21-win.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-web\\21\\javafx-web-21.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-web\\21\\javafx-web-21-win.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-swing\\21\\javafx-swing-21.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-swing\\21\\javafx-swing-21-win.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-media\\21\\javafx-media-21.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-media\\21\\javafx-media-21-win.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\controlsfx\\controlsfx\\11.2.1\\controlsfx-11.2.1.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\dlsc\\formsfx\\formsfx-core\\11.6.0\\formsfx-core-11.6.0.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\net\\synedra\\validatorfx\\0.5.0\\validatorfx-0.5.0.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\ikonli\\ikonli-javafx\\12.3.1\\ikonli-javafx-12.3.1.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\ikonli\\ikonli-core\\12.3.1\\ikonli-core-12.3.1.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\bootstrapfx\\bootstrapfx-core\\0.4.0\\bootstrapfx-core-0.4.0.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\tilesfx\\21.0.3\\tilesfx-21.0.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\fx\\countries\\21.0.3\\countries-21.0.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\fx\\heatmap\\21.0.3\\heatmap-21.0.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\toolboxfx\\21.0.3\\toolboxfx-21.0.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\toolbox\\21.0.5\\toolbox-21.0.5.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl\\17.3\\fxgl-17.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-core\\17.3\\fxgl-core-17.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\audio\\4.0.17\\audio-4.0.17.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-io\\17.3\\fxgl-io-17.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\storage\\4.0.17\\storage-4.0.17.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\util\\4.0.17\\util-4.0.17.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-entity\\17.3\\fxgl-entity-17.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-scene\\17.3\\fxgl-scene-17.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-gameplay\\17.3\\fxgl-gameplay-17.3.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-annotations\\2.14.2\\jackson-annotations-2.14.2.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-databind\\2.14.2\\jackson-databind-2.14.2.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-core\\2.14.2\\jackson-core-2.14.2.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\lifecycle\\4.0.17\\lifecycle-4.0.17.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\kotlin\\kotlin-stdlib\\1.8.10\\kotlin-stdlib-1.8.10.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\kotlin\\kotlin-stdlib-common\\1.8.10\\kotlin-stdlib-common-1.8.10.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\annotations\\13.0\\annotations-13.0.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.10.2\\junit-jupiter-api-5.10.2.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\opentest4j\\opentest4j\\1.3.0\\opentest4j-1.3.0.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.10.2\\junit-platform-commons-1.10.2.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.2\\apiguardian-api-1.1.2.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-engine\\5.10.2\\junit-jupiter-engine-5.10.2.jar",
+            "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\platform\\junit-platform-engine\\1.10.2\\junit-platform-engine-1.10.2.jar"
+        ],
+        "out": "C:\\Users\\Leati\\OneDrive\\Documents\\Master1 MIAGE\\Programmation Objet\\Projet\\Shopping-application\\Projet Shop\\target",
+        "classesDir": "C:\\Users\\Leati\\OneDrive\\Documents\\Master1 MIAGE\\Programmation Objet\\Projet\\Shopping-application\\Projet Shop\\target\\test-classes",
+        "resources": [
+            "C:\\Users\\Leati\\OneDrive\\Documents\\Master1 MIAGE\\Programmation Objet\\Projet\\Shopping-application\\Projet Shop\\src\\test\\resources"
+        ],
+        "java": {
+            "options": [
+                "-g",
+                "-encoding",
+                "UTF-8"
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework",
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "utest.runner.Framework"
+                    ]
+                },
+                {
+                    "names": [
+                        "munit.Framework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    {
+                        "args": [
+                            "-v",
+                            "-a"
+                        ],
+                        "framework": {
+                            "names": [
+                                "com.novocode.junit.JUnitFramework"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "C:\\Users\\Leati\\AppData\\Local\\Programs\\Eclipse Adoptium\\jdk-17.0.8.101-hotspot",
+                "options": [
+                    
+                ]
+            },
+            "mainClass": [
+                
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-fxml",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-fxml",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-fxml\\21\\javafx-fxml-21.jar"
+                        },
+                        {
+                            "name": "javafx-fxml",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-fxml\\21\\javafx-fxml-21-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.kordamp.ikonli",
+                    "name": "ikonli-core",
+                    "version": "12.3.1",
+                    "artifacts": [
+                        {
+                            "name": "ikonli-core",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\ikonli\\ikonli-core\\12.3.1\\ikonli-core-12.3.1.jar"
+                        },
+                        {
+                            "name": "ikonli-core",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\ikonli\\ikonli-core\\12.3.1\\ikonli-core-12.3.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.junit.platform",
+                    "name": "junit-platform-commons",
+                    "version": "1.10.2",
+                    "artifacts": [
+                        {
+                            "name": "junit-platform-commons",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.10.2\\junit-platform-commons-1.10.2.jar"
+                        },
+                        {
+                            "name": "junit-platform-commons",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.10.2\\junit-platform-commons-1.10.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.github.almasb",
+                    "name": "fxgl-gameplay",
+                    "version": "17.3",
+                    "artifacts": [
+                        {
+                            "name": "fxgl-gameplay",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-gameplay\\17.3\\fxgl-gameplay-17.3.jar"
+                        },
+                        {
+                            "name": "fxgl-gameplay",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-gameplay\\17.3\\fxgl-gameplay-17.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-base",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-base",
+                            "classifier": "win",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-base\\21\\javafx-base-21-win.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-graphics",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-graphics",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-graphics\\21\\javafx-graphics-21.jar"
+                        },
+                        {
+                            "name": "javafx-graphics",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-graphics\\21\\javafx-graphics-21-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jetbrains.kotlin",
+                    "name": "kotlin-stdlib-common",
+                    "version": "1.8.10",
+                    "artifacts": [
+                        {
+                            "name": "kotlin-stdlib-common",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\kotlin\\kotlin-stdlib-common\\1.8.10\\kotlin-stdlib-common-1.8.10.jar"
+                        },
+                        {
+                            "name": "kotlin-stdlib-common",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\kotlin\\kotlin-stdlib-common\\1.8.10\\kotlin-stdlib-common-1.8.10-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.github.almasb",
+                    "name": "fxgl-entity",
+                    "version": "17.3",
+                    "artifacts": [
+                        {
+                            "name": "fxgl-entity",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-entity\\17.3\\fxgl-entity-17.3.jar"
+                        },
+                        {
+                            "name": "fxgl-entity",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-entity\\17.3\\fxgl-entity-17.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "eu.hansolo.fx",
+                    "name": "heatmap",
+                    "version": "21.0.3",
+                    "artifacts": [
+                        {
+                            "name": "heatmap",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\fx\\heatmap\\21.0.3\\heatmap-21.0.3.jar"
+                        },
+                        {
+                            "name": "heatmap",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\fx\\heatmap\\21.0.3\\heatmap-21.0.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.gluonhq.attach",
+                    "name": "storage",
+                    "version": "4.0.17",
+                    "artifacts": [
+                        {
+                            "name": "storage",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\storage\\4.0.17\\storage-4.0.17.jar"
+                        },
+                        {
+                            "name": "storage",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\storage\\4.0.17\\storage-4.0.17-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.kordamp.ikonli",
+                    "name": "ikonli-javafx",
+                    "version": "12.3.1",
+                    "artifacts": [
+                        {
+                            "name": "ikonli-javafx",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\ikonli\\ikonli-javafx\\12.3.1\\ikonli-javafx-12.3.1.jar"
+                        },
+                        {
+                            "name": "ikonli-javafx",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\ikonli\\ikonli-javafx\\12.3.1\\ikonli-javafx-12.3.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.gluonhq.attach",
+                    "name": "lifecycle",
+                    "version": "4.0.17",
+                    "artifacts": [
+                        {
+                            "name": "lifecycle",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\lifecycle\\4.0.17\\lifecycle-4.0.17.jar"
+                        },
+                        {
+                            "name": "lifecycle",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\lifecycle\\4.0.17\\lifecycle-4.0.17-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.junit.platform",
+                    "name": "junit-platform-engine",
+                    "version": "1.10.2",
+                    "artifacts": [
+                        {
+                            "name": "junit-platform-engine",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\platform\\junit-platform-engine\\1.10.2\\junit-platform-engine-1.10.2.jar"
+                        },
+                        {
+                            "name": "junit-platform-engine",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\platform\\junit-platform-engine\\1.10.2\\junit-platform-engine-1.10.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "eu.hansolo",
+                    "name": "toolboxfx",
+                    "version": "21.0.3",
+                    "artifacts": [
+                        {
+                            "name": "toolboxfx",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\toolboxfx\\21.0.3\\toolboxfx-21.0.3.jar"
+                        },
+                        {
+                            "name": "toolboxfx",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\toolboxfx\\21.0.3\\toolboxfx-21.0.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.gluonhq.attach",
+                    "name": "audio",
+                    "version": "4.0.17",
+                    "artifacts": [
+                        {
+                            "name": "audio",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\audio\\4.0.17\\audio-4.0.17.jar"
+                        },
+                        {
+                            "name": "audio",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\audio\\4.0.17\\audio-4.0.17-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.opentest4j",
+                    "name": "opentest4j",
+                    "version": "1.3.0",
+                    "artifacts": [
+                        {
+                            "name": "opentest4j",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\opentest4j\\opentest4j\\1.3.0\\opentest4j-1.3.0.jar"
+                        },
+                        {
+                            "name": "opentest4j",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\opentest4j\\opentest4j\\1.3.0\\opentest4j-1.3.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.github.almasb",
+                    "name": "fxgl-io",
+                    "version": "17.3",
+                    "artifacts": [
+                        {
+                            "name": "fxgl-io",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-io\\17.3\\fxgl-io-17.3.jar"
+                        },
+                        {
+                            "name": "fxgl-io",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-io\\17.3\\fxgl-io-17.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "eu.hansolo",
+                    "name": "tilesfx",
+                    "version": "21.0.3",
+                    "artifacts": [
+                        {
+                            "name": "tilesfx",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\tilesfx\\21.0.3\\tilesfx-21.0.3.jar"
+                        },
+                        {
+                            "name": "tilesfx",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\tilesfx\\21.0.3\\tilesfx-21.0.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jetbrains.kotlin",
+                    "name": "kotlin-stdlib",
+                    "version": "1.8.10",
+                    "artifacts": [
+                        {
+                            "name": "kotlin-stdlib",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\kotlin\\kotlin-stdlib\\1.8.10\\kotlin-stdlib-1.8.10.jar"
+                        },
+                        {
+                            "name": "kotlin-stdlib",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\kotlin\\kotlin-stdlib\\1.8.10\\kotlin-stdlib-1.8.10-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-fxml",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-fxml",
+                            "classifier": "win",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-fxml\\21\\javafx-fxml-21-win.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.github.almasb",
+                    "name": "fxgl-core",
+                    "version": "17.3",
+                    "artifacts": [
+                        {
+                            "name": "fxgl-core",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-core\\17.3\\fxgl-core-17.3.jar"
+                        },
+                        {
+                            "name": "fxgl-core",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-core\\17.3\\fxgl-core-17.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.gluonhq.attach",
+                    "name": "util",
+                    "version": "4.0.17",
+                    "artifacts": [
+                        {
+                            "name": "util",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\util\\4.0.17\\util-4.0.17.jar"
+                        },
+                        {
+                            "name": "util",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\gluonhq\\attach\\util\\4.0.17\\util-4.0.17-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-swing",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-swing",
+                            "classifier": "win",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-swing\\21\\javafx-swing-21-win.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-controls",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-controls",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-controls\\21\\javafx-controls-21.jar"
+                        },
+                        {
+                            "name": "javafx-controls",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-controls\\21\\javafx-controls-21-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.dlsc.formsfx",
+                    "name": "formsfx-core",
+                    "version": "11.6.0",
+                    "artifacts": [
+                        {
+                            "name": "formsfx-core",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\dlsc\\formsfx\\formsfx-core\\11.6.0\\formsfx-core-11.6.0.jar"
+                        },
+                        {
+                            "name": "formsfx-core",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\dlsc\\formsfx\\formsfx-core\\11.6.0\\formsfx-core-11.6.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jetbrains",
+                    "name": "annotations",
+                    "version": "13.0",
+                    "artifacts": [
+                        {
+                            "name": "annotations",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\annotations\\13.0\\annotations-13.0.jar"
+                        },
+                        {
+                            "name": "annotations",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\jetbrains\\annotations\\13.0\\annotations-13.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "eu.hansolo",
+                    "name": "toolbox",
+                    "version": "21.0.5",
+                    "artifacts": [
+                        {
+                            "name": "toolbox",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\toolbox\\21.0.5\\toolbox-21.0.5.jar"
+                        },
+                        {
+                            "name": "toolbox",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\toolbox\\21.0.5\\toolbox-21.0.5-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.junit.jupiter",
+                    "name": "junit-jupiter-engine",
+                    "version": "5.10.2",
+                    "artifacts": [
+                        {
+                            "name": "junit-jupiter-engine",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-engine\\5.10.2\\junit-jupiter-engine-5.10.2.jar"
+                        },
+                        {
+                            "name": "junit-jupiter-engine",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-engine\\5.10.2\\junit-jupiter-engine-5.10.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.apiguardian",
+                    "name": "apiguardian-api",
+                    "version": "1.1.2",
+                    "artifacts": [
+                        {
+                            "name": "apiguardian-api",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.2\\apiguardian-api-1.1.2.jar"
+                        },
+                        {
+                            "name": "apiguardian-api",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.2\\apiguardian-api-1.1.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-swing",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-swing",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-swing\\21\\javafx-swing-21.jar"
+                        },
+                        {
+                            "name": "javafx-swing",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-swing\\21\\javafx-swing-21-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.fasterxml.jackson.core",
+                    "name": "jackson-annotations",
+                    "version": "2.14.2",
+                    "artifacts": [
+                        {
+                            "name": "jackson-annotations",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-annotations\\2.14.2\\jackson-annotations-2.14.2.jar"
+                        },
+                        {
+                            "name": "jackson-annotations",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-annotations\\2.14.2\\jackson-annotations-2.14.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-web",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-web",
+                            "classifier": "win",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-web\\21\\javafx-web-21-win.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.controlsfx",
+                    "name": "controlsfx",
+                    "version": "11.2.1",
+                    "artifacts": [
+                        {
+                            "name": "controlsfx",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\controlsfx\\controlsfx\\11.2.1\\controlsfx-11.2.1.jar"
+                        },
+                        {
+                            "name": "controlsfx",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\controlsfx\\controlsfx\\11.2.1\\controlsfx-11.2.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.github.almasb",
+                    "name": "fxgl-scene",
+                    "version": "17.3",
+                    "artifacts": [
+                        {
+                            "name": "fxgl-scene",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-scene\\17.3\\fxgl-scene-17.3.jar"
+                        },
+                        {
+                            "name": "fxgl-scene",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl-scene\\17.3\\fxgl-scene-17.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-media",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-media",
+                            "classifier": "win",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-media\\21\\javafx-media-21-win.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "net.synedra",
+                    "name": "validatorfx",
+                    "version": "0.5.0",
+                    "artifacts": [
+                        {
+                            "name": "validatorfx",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\net\\synedra\\validatorfx\\0.5.0\\validatorfx-0.5.0.jar"
+                        },
+                        {
+                            "name": "validatorfx",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\net\\synedra\\validatorfx\\0.5.0\\validatorfx-0.5.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-base",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-base",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-base\\21\\javafx-base-21.jar"
+                        },
+                        {
+                            "name": "javafx-base",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-base\\21\\javafx-base-21-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "eu.hansolo.fx",
+                    "name": "countries",
+                    "version": "21.0.3",
+                    "artifacts": [
+                        {
+                            "name": "countries",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\fx\\countries\\21.0.3\\countries-21.0.3.jar"
+                        },
+                        {
+                            "name": "countries",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\eu\\hansolo\\fx\\countries\\21.0.3\\countries-21.0.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.fasterxml.jackson.core",
+                    "name": "jackson-core",
+                    "version": "2.14.2",
+                    "artifacts": [
+                        {
+                            "name": "jackson-core",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-core\\2.14.2\\jackson-core-2.14.2.jar"
+                        },
+                        {
+                            "name": "jackson-core",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-core\\2.14.2\\jackson-core-2.14.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.github.almasb",
+                    "name": "fxgl",
+                    "version": "17.3",
+                    "artifacts": [
+                        {
+                            "name": "fxgl",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl\\17.3\\fxgl-17.3.jar"
+                        },
+                        {
+                            "name": "fxgl",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\github\\almasb\\fxgl\\17.3\\fxgl-17.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.kordamp.bootstrapfx",
+                    "name": "bootstrapfx-core",
+                    "version": "0.4.0",
+                    "artifacts": [
+                        {
+                            "name": "bootstrapfx-core",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\bootstrapfx\\bootstrapfx-core\\0.4.0\\bootstrapfx-core-0.4.0.jar"
+                        },
+                        {
+                            "name": "bootstrapfx-core",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\kordamp\\bootstrapfx\\bootstrapfx-core\\0.4.0\\bootstrapfx-core-0.4.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-media",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-media",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-media\\21\\javafx-media-21.jar"
+                        },
+                        {
+                            "name": "javafx-media",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-media\\21\\javafx-media-21-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-controls",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-controls",
+                            "classifier": "win",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-controls\\21\\javafx-controls-21-win.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.junit.jupiter",
+                    "name": "junit-jupiter-api",
+                    "version": "5.10.2",
+                    "artifacts": [
+                        {
+                            "name": "junit-jupiter-api",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.10.2\\junit-jupiter-api-5.10.2.jar"
+                        },
+                        {
+                            "name": "junit-jupiter-api",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.10.2\\junit-jupiter-api-5.10.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.fasterxml.jackson.core",
+                    "name": "jackson-databind",
+                    "version": "2.14.2",
+                    "artifacts": [
+                        {
+                            "name": "jackson-databind",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-databind\\2.14.2\\jackson-databind-2.14.2.jar"
+                        },
+                        {
+                            "name": "jackson-databind",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-databind\\2.14.2\\jackson-databind-2.14.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-graphics",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-graphics",
+                            "classifier": "win",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-graphics\\21\\javafx-graphics-21-win.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.openjfx",
+                    "name": "javafx-web",
+                    "version": "21",
+                    "artifacts": [
+                        {
+                            "name": "javafx-web",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-web\\21\\javafx-web-21.jar"
+                        },
+                        {
+                            "name": "javafx-web",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\Leati\\.m2\\repository\\org\\openjfx\\javafx-web\\21\\javafx-web-21-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "test"
+        ]
+    }
+}

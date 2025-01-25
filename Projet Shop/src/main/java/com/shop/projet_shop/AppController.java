@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -16,10 +18,10 @@ public class AppController {
 
     @FXML
     BorderPane contentPane;
+
     @FXML
     private ComboBox<String> authOptions;
 
-    // Gestion de la sélection dans la liste déroulante
     @FXML
     private void handleAuthSelection(ActionEvent event) throws IOException {
         String selectedOption = authOptions.getValue();
@@ -61,6 +63,10 @@ public class AppController {
     public void showSignInView() throws IOException {
         contentPane.setCenter(new SignInView().getView());
     }
+
+
+
+
 
     protected void showErrorMessage(String message) {
         System.out.println(message);

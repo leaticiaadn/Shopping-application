@@ -3,15 +3,15 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="contentPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.Admin.ProductController" stylesheets="@../style.css">
+<BorderPane fx:id="contentPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.ProductController" stylesheets="@../style.css">
     <center>
         <StackPane fx:id="contentStack" alignment="CENTER">
             <children>
                 <VBox spacing="20.0" alignment="CENTER" maxWidth="Infinity" maxHeight="Infinity">
                     <children>
+                        <Text text="Add New Product" styleClass="title" />
                         <GridPane hgap="15" vgap="15" alignment="CENTER">
                             <children>
                                 <!-- Labels -->
@@ -23,31 +23,18 @@
                                 <!-- Fields -->
                                 <TextField fx:id="name" promptText="Enter product name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                                 <TextField fx:id="description" promptText="Enter description" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-                                <!-- Price Controls -->
-                                <HBox spacing="10" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                    <children>
-                                        <Button fx:id="decreasePriceButton" text="-" onAction="#decreasePrice"/>
-                                        <TextField fx:id="priceTextField" promptText="Enter price" editable="false" GridPane.columnIndex="1" />
-                                        <Button fx:id="increasePriceButton" text="+" onAction="#increasePrice"/>
-                                    </children>
-                                </HBox>
-
-                                <!-- Stock Controls -->
-                                <HBox spacing="10" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                    <children>
-                                        <Button fx:id="decreaseStockButton" text="-" onAction="#decreaseStock"/>
-                                        <TextField fx:id="stockQuantityField" promptText="Enter stock quantity" editable="false" />
-                                        <Button fx:id="increaseStockButton" text="+" onAction="#increaseStock"/>
-                                    </children>
-                                </HBox>
+                                <TextField fx:id="priceTextField" promptText="Enter price" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <TextField fx:id="stockQuantityField" promptText="Enter stock quantity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <Button fx:id="imagePathButton" text="Choose an Image" onAction="#selectImage" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <Label fx:id="imagePathLabel" text="No image selected" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
                             </children>
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="109.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="189.0" />
+                                <ColumnConstraints hgrow="ALWAYS" maxWidth="400.0" minWidth="10.0" />
                             </columnConstraints>
                             <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

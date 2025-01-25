@@ -1,7 +1,7 @@
-package com.shop.projet_shop.Admin;
+package com.shop.projet_shop;
 
 import com.shop.projet_shop.DataBase.Commande;
-import com.shop.projet_shop.DatabaseConnection;
+import com.shop.projet_shop.User.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -41,6 +40,8 @@ public class CommandeController {
     @FXML
     private TextField searchField;
 
+    private String role = UserSession.getRole();
+
     private final ObservableList<String> statusOptions = FXCollections.observableArrayList("annulée", "livrée", "expédiée", "en attente");
 
     public void initialize() {
@@ -57,6 +58,10 @@ public class CommandeController {
                 commande.setStatus(event.getNewValue());
                 updateCommandeStatusInDatabase(commande);
             });
+
+            if (role.equals("user")) {
+                commandeTable.getColumns().removeAll(userColumn);
+            }
             if (detailsColumn != null) {
                 detailsColumn.setCellFactory(param -> new TableCell<Commande, Void>() {
                     private final Button detailButton = new Button("Détails");
@@ -83,8 +88,7 @@ public class CommandeController {
                     }
                 });
             }
-
-            if (editColumn != null) {
+            if (editColumn != null && !role.equals("user")) {
                 editColumn.setCellFactory(param -> new TableCell<Commande, Void>() {
                     private final Button editButton = new Button("Modifier");
                     {
@@ -131,8 +135,17 @@ public class CommandeController {
     private ObservableList<Commande> getProductsFromDatabase() {
         ObservableList<Commande> commandes = FXCollections.observableArrayList();
         String sql = "SELECT * FROM orders INNER JOIN users ON users.id = orders.user_id";
+        if (role.equals("user")) {
+            sql+=" WHERE users.username = ?";
+            System.out.println("test");
+        }
+
         try (Connection connection = DatabaseConnection.getConnection()) {
             PreparedStatement stmt = connection.prepareStatement(sql);
+            if (role.equals("user")) {
+                stmt.setString(1,UserSession.getCurrentUser());
+                System.out.println(UserSession.getCurrentUser());
+            }
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -217,7 +230,7 @@ public class CommandeController {
 
     private void DeleteCommand(Commande commande) {
         String deleteFacturesSql = "DELETE FROM facture WHERE order_id = ?";
-        String deleteOrderItemsSql = "DELETE FROM order_item WHERE order_id = ?";
+        String deleteOrderItemsSql = "DELETE FROM order_items WHERE order_id = ?";
         try (Connection connection = DatabaseConnection.getConnection()) {
             PreparedStatement stmtFactures = connection.prepareStatement(deleteFacturesSql);
             PreparedStatement stmtOrderItems = connection.prepareStatement(deleteOrderItemsSql);

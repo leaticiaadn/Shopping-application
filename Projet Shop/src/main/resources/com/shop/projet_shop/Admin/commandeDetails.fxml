@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.Admin.CommandeDetailController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.CommandeDetailController">
     <top>
         <HBox spacing="10" alignment="CENTER">
             <Label text="Détails de la commande" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>

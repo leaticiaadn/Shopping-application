@@ -40,6 +40,106 @@
     -fx-spacing: 15px;
 }
 
+/* Style pour le MenuButton */
+.menu-button {
+    -fx-background-color: #f9429e;
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-border: none;
+    -fx-transition: 0.3s;
+    -fx-margin-bottom: 10px;
+    -fx-font-weight: bold;
+}
+.menu-button .label {
+    -fx-text-fill: white;
+}
+.menu-button:hover {
+    -fx-background-color: #f9429e;
+}
+
+.menu-button:focused {
+    -fx-background-color: #f9429e;
+}
+
+.menu-button:pressed {
+    -fx-background-color: rgba(249, 66, 158, 0.44);
+    -fx-border-color: #f69ac6;
+}
+
+.menu-button .menu-item {
+    -fx-background-color: #f64296; /* Fond blanc pour les options */
+    -fx-text-fill: #FFFFFF; /* Texte noir-gris */
+    -fx-font-size: 12px; /* Taille de la police */
+    -fx-padding: 8px; /* Espacement interne */
+}
+
+.menu-button .menu-item:hover {
+    -fx-background-color: #ea92c1; /* Fond vert clair au survol */
+    -fx-text-fill: #ea92c1; /* Texte vert au survol */
+}
+
+/* Style général du TableView */
+.table-view {
+    -fx-background-color: #f8f8f8; /* Couleur de fond du tableau */
+    -fx-border-color: #ddd; /* Couleur de la bordure */
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Arial', sans-serif;
+}
+
+/* Style pour les lignes alternées */
+.table-row-cell:odd {
+    -fx-background-color: #f2f2f2; /* Couleur pour les lignes impaires */
+}
+
+.table-row-cell:even {
+    -fx-background-color: #ffffff; /* Couleur pour les lignes paires */
+}
+
+/* Style pour les colonnes */
+.table-cell {
+    -fx-border-color: #ddd; /* Bordure entre les cellules */
+    -fx-border-width: 0 0 1px 0; /* Ligne de séparation horizontale */
+    -fx-padding: 10px; /* Espacement interne */
+}
+
+/* Effet de survol sur une ligne */
+.table-row-cell:hover {
+    -fx-background-color: #ea92c1; /* Couleur de surbrillance au survol */
+}
+
+/* En-tête du tableau */
+.table-view .column-header {
+    -fx-background-color: rgba(249, 66, 158, 0.44); /* Couleur de fond de l'en-tête */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-weight: bold; /* Texte en gras */
+    -fx-alignment: center; /* Alignement du texte */
+}
+
+/* Bordures des colonnes dans l'en-tête */
+.table-view .column-header .label {
+    -fx-border-color: #f69ac6;
+    -fx-border-width: 0 1px 0 0;
+    -fx-padding: 10px;
+}
+
+/* Sélection d'une cellule */
+.table-cell:selected {
+    -fx-background-color: #af4879; /* Couleur de fond de la sélection */
+    -fx-text-fill: white; /* Texte de la cellule sélectionnée */
+}
+
+/* Désactiver les lignes vides */
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+
+
 
 
 

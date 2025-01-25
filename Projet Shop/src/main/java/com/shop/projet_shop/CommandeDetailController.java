@@ -1,12 +1,9 @@
-package com.shop.projet_shop.Admin;
+package com.shop.projet_shop;
 
-import com.shop.projet_shop.DataBase.Commande;
 import com.shop.projet_shop.DataBase.Facture;
 import com.shop.projet_shop.DataBase.OrderItem;
-import com.shop.projet_shop.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.text.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -37,7 +34,7 @@ public class CommandeDetailController {
 
     private ObservableList<OrderItem> getOrderItems(int orderId) {
         ObservableList<OrderItem> orderItems = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM order_item INNER JOIN products ON order_item.product_id = products.id WHERE order_id = ?";
+        String sql = "SELECT * FROM order_items INNER JOIN products ON order_items.product_id = products.id WHERE order_id = ?";
         try (Connection connection = DatabaseConnection.getConnection()) {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, orderId);
@@ -57,7 +54,7 @@ public class CommandeDetailController {
 
     private ObservableList<Facture> getFactures(int orderId) {
         ObservableList<Facture> factures = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM facture WHERE order_id = ?";
+        String sql = "SELECT * FROM factures WHERE order_id = ?";
         try (Connection connection = DatabaseConnection.getConnection()) {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, orderId);

@@ -5,9 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,7 +16,7 @@ public class AdminController {
     @FXML
     private TextField email;
     @FXML
-    private ComboBox<String> role;
+    private MenuButton role;
     @FXML
     private PasswordField password;
     @FXML
@@ -39,6 +37,13 @@ public class AdminController {
                 }
             });
         }
+        if (role != null){
+            for (MenuItem item : role.getItems()) {
+                item.setOnAction(event -> {
+                    role.setText(item.getText());
+                });
+            }
+        }
     }
 
     @FXML
@@ -46,7 +51,7 @@ public class AdminController {
         String username = user.getText();
         String pwd = password.getText();
         String emailAddress = email.getText();
-        String roleName = role.getSelectionModel().getSelectedItem();
+        String roleName = role.getText();
         String sql = "INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql)) {
 
@@ -73,7 +78,6 @@ public class AdminController {
              PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
-            // Parcourir les résultats et les ajouter à la liste
             while (rs.next()) {
                 String username = rs.getString("username");
                 String role = rs.getString("role");
@@ -87,28 +91,7 @@ public class AdminController {
     }
 
 
-    @FXML
-    public void deleteUser(ActionEvent event){
-        String selectedUser = userComboBox.getValue();
-        String [] tab = selectedUser.split(" - ");
-        System.out.println(selectedUser);
-        System.out.println(tab[0]);
-        System.out.println(tab[1]);
-        String sql = "DELETE FROM users WHERE username = ? and role = ?";
-        try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, tab[0]);
-            stmt.setString(2, tab[1]);
-            int rowsAffected = stmt.executeUpdate();
 
-            if (rowsAffected > 0) {
-                System.out.println("Suppression réussie !");
-            } else {
-                System.out.println("Aucun utilisateur supprimé. Vérifiez les données.");
-            }
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de l'insertion : " + e.getMessage());
-        }
-    }
 
 
 }

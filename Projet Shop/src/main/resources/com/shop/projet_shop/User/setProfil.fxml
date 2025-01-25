@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.layout.HBox?>
+<GridPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+          alignment="CENTER" hgap="10" vgap="10" fx:controller="com.shop.projet_shop.User.UserController">
+    <Label text="Modifier Mon Profil" style="-fx-font-size: 20px;" GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
+
+    <Label text="Nom:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="nameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Numéro de téléphone:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField fx:id="phoneField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="Adresse" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField fx:id="adresseField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label fx:id="messageLabel" GridPane.rowIndex="5" GridPane.columnIndex="1" text="" style="-fx-text-fill: #155724; -fx-font-size: 14px; -fx-font-weight: bold;" />
+
+
+
+    <Button text="Enregistrer" onAction="#saveProfile" GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.halignment="RIGHT"/>
+</GridPane>

@@ -20,16 +20,9 @@
                         <TableColumn fx:id="emailColumn" text="Email" prefWidth="100.0" />
                         <TableColumn fx:id="roleColumn" text="Role" prefWidth="100.0" />
                         <TableColumn fx:id="dateColumn" text="Date de création" prefWidth="150.0" />
-                        <TableColumn fx:id="deleteColumn" text="Supprimer" prefWidth="150.0" />
                     </columns>
                 </TableView>
             </content>
         </ScrollPane>
     </center>
-    <bottom>
-        <HBox fx:id="messageContainer" alignment="CENTER" style="-fx-background-color: #d4edda; -fx-border-color: #c3e6cb; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-padding: 10;">
-            <Label fx:id="messageLabel" text="" style="-fx-text-fill: #155724; -fx-font-size: 14px; -fx-font-weight: bold;" />
-        </HBox>
-    </bottom>
-
 </BorderPane>

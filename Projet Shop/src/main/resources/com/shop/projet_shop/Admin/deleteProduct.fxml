@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="contentPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.Admin.ProductController" stylesheets="@../style.css">
+<BorderPane fx:id="contentPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.ProductController" stylesheets="@../style.css">
     <center>
         <StackPane fx:id="contentStack" alignment="CENTER">
             <children>

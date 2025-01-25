@@ -3,14 +3,23 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
+<?import javafx.scene.text.*?>
 
 <BorderPane fx:id="contentPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.Admin.AdminController" stylesheets="@../style.css">
-    <center>
-        <StackPane fx:id="contentStack" alignment="CENTER">
+    <top>
+        <VBox alignment="CENTER">
             <children>
-                <VBox spacing="20.0" alignment="CENTER" maxWidth="Infinity" maxHeight="Infinity">
+                <Label text="User Management" styleClass="title-label" />
+            </children>
+            <padding>
+                <Insets top="10" bottom="10" />
+            </padding>
+        </VBox>
+    </top>
+    <center>
+        <StackPane fx:id="contentStack" alignment="CENTER" >
+            <children >
+                <VBox spacing="20.0" alignment="CENTER" maxWidth="Infinity" maxHeight="Infinity"  style="-fx-background-color: #ef1cef;">
                     <children>
                         <GridPane hgap="15" vgap="15" alignment="CENTER">
                             <children>
@@ -21,15 +30,13 @@
                                 <TextField fx:id="user" promptText="Entrez votre nom d'utilisateur" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                                 <PasswordField fx:id="password" promptText="Entrez votre mot de passe" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <TextField fx:id="email" promptText="Entrez votre email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <ComboBox fx:id="role" promptText="Choisissez un rôle" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                <MenuButton fx:id="role" text="Choisissez un rôle" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                     <items>
-                                        <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="admin" />
-                                            <String fx:value="user" />
-                                            <String fx:value="gestionnaire" />
-                                        </FXCollections>
+                                        <MenuItem text="admin" />
+                                        <MenuItem text="user" />
+                                        <MenuItem text="gestionnaire" />
                                     </items>
-                                </ComboBox>
+                                </MenuButton>
                             </children>
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="109.0" />
@@ -45,7 +52,7 @@
 
                         <HBox spacing="20" alignment="CENTER">
                             <children>
-                                <Button fx:id="addUserButton" mnemonicParsing="false" text="Add User" onAction="#addUser"/>
+                                <Button fx:id="addUserButton" mnemonicParsing="false" text="Add User" onAction="#addUser" />
                             </children>
                         </HBox>
                     </children>
