@@ -3,43 +3,76 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.input.*?>
 
+<?import javafx.scene.shape.SVGPath?>
 <BorderPane fx:id="contentPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.Login.LoginController" stylesheets="@../style.css">
     <center>
-        <StackPane fx:id="contentStack" alignment="CENTER">
-            <children>
-                <VBox spacing="20.0" alignment="CENTER" maxWidth="Infinity" maxHeight="Infinity">
-                    <!-- VBox avec espacement augmenté pour les éléments -->
-                    <children>
-                        <GridPane hgap="15" vgap="15" alignment="CENTER">
-                            <!-- Espacement horizontal et vertical dans le GridPane -->
-                            <children>
-                                <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                                <TextField fx:id="user" promptText="username" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                <PasswordField fx:id="password" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label fx:id="errorMessage" text="" visible="false" style="-fx-text-fill: red;" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                            </children>
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="109.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="189.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                        </GridPane>
+        <!-- Centrer le contenu -->
+        <StackPane alignment="CENTER">
+            <VBox spacing="20.0" alignment="CENTER" maxWidth="Infinity">
+                <Label text="Connectez-vous ou créez votre compte" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
-                        <HBox spacing="20" alignment="CENTER">
-                            <children>
-                                <Button fx:id="goToSignin" mnemonicParsing="false" text="Sign In" onAction="#showSignInView"/>
-                                <Button fx:id="loginButton" mnemonicParsing="false" text="Login" onAction="#handleLogin" defaultButton="true"/>
-                            </children>
-                        </HBox>
-                    </children>
-                </VBox>
-            </children>
+                <SplitPane dividerPositions="0.6" style="-fx-border-color: transparent; -fx-divider-width: 0;">
+                    <items>
+                        <Pane>
+                            <VBox spacing="20.0" alignment="CENTER_RIGHT" maxWidth="Infinity" maxHeight="Infinity">
+                                <Label text="Disposez-vous déjà d’un compte ? M'identifier" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+                                <GridPane hgap="15" vgap="15" alignment="CENTER">
+                                    <children>
+                                        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                        <TextField fx:id="user" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <PasswordField fx:id="password" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <Label fx:id="errorMessage" text="" visible="false" style="-fx-text-fill: red;" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                    </children>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="109.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="189.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                </GridPane>
+
+                                <HBox spacing="20" alignment="CENTER">
+                                    <children>
+                                        <Button fx:id="loginButton" mnemonicParsing="false" text="Se Connecter" onAction="#handleLogin" defaultButton="true"/>
+                                    </children>
+                                </HBox>
+                            </VBox>
+                        </Pane>
+                        <Pane>
+                            <VBox alignment="CENTER_RIGHT" spacing="20.0">
+                                <Label text="Tu n’as pas encore de compte ?" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                                <HBox spacing="10" alignment="CENTER_LEFT" maxWidth="Infinity">
+                                    <SVGPath content="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"
+                                             fill="black" scaleX="1.5" scaleY="1.5"/>
+                                    <Label text="Suis l’avancement de tes commandes" style="-fx-font-size: 14px;" />
+                                </HBox>
+                                <HBox spacing="10" alignment="CENTER_LEFT" maxWidth="Infinity">
+                                    <SVGPath content="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"
+                                             fill="black" scaleX="1.5" scaleY="1.5"/>
+
+                                    <Label text="Enregistre tes données de livraison et de paiement afin de gagner du temps lors de ta prochaine commande"
+                                           style="-fx-font-size: 16px;"
+                                           wrapText="true"
+                                           maxWidth="300" />
+                                </HBox>
+                                <HBox spacing="10" alignment="CENTER_LEFT" maxWidth="Infinity">
+                                    <SVGPath content="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z"
+                                             fill="black" scaleX="1.5" scaleY="1.5"/>
+                                    <Label text="Réalisé des retours en ligne" style="-fx-font-size: 14px;" />
+                                </HBox>
+                                <Button fx:id="createAccountButton" text="Inscris-toi" style="-fx-font-size: 16px; -fx-background-color: #0e0e0e; -fx-text-fill: white;" onAction="#showSignInView"/>
+                            </VBox>
+                        </Pane>
+                    </items>
+                </SplitPane>
+            </VBox>
         </StackPane>
     </center>
     <padding>

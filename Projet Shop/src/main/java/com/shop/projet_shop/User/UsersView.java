@@ -86,11 +86,6 @@ public class UsersView {
         contentPane.setCenter(addUser);
     }
 
-    @FXML
-    public void DeleteUserView(ActionEvent event) throws IOException {
-        Parent DeleteUser = FXMLLoader.load(getClass().getResource("/com/shop/projet_shop/Admin/deleteUser.fxml"));
-        contentPane.setCenter(DeleteUser);
-    }
 
     // GESTION DE PRODUIT :
     public void ProductView(ActionEvent event) throws IOException {

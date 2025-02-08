@@ -8,19 +8,22 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.shop.projet_shop.ProductController" stylesheets="@../style.css">
     <top>
         <HBox alignment="CENTER_RIGHT" spacing="10">
-            <!-- Bouton "Add Product" en haut à droite -->
             <Button fx:id="addProductButton" text="Add Product" onAction="#addProductView" />
         </HBox>
+        <VBox fx:id="notificationBox" spacing="5" alignment="TOP_LEFT" minHeight="100">
+            <padding>
+                <Insets top="10" right="10" left="10"/>
+            </padding>
+        </VBox>
     </top>
+
     <center>
-        <!-- Utilisation d'un ScrollPane pour rendre la GridPane défilable -->
-        <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true">
-            <content>
-                <!-- GridPane centré dans le ScrollPane -->
-                <GridPane fx:id="productGrid" alignment="CENTER" hgap="20" vgap="20">
-                    <!-- Les éléments seront ajoutés dynamiquement via le contrôleur -->
-                </GridPane>
-            </content>
-        </ScrollPane>
+        <StackPane>
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true">
+                <content>
+                    <GridPane fx:id="productGrid" alignment="CENTER" hgap="20" vgap="20"/>
+                </content>
+            </ScrollPane>
+        </StackPane>
     </center>
 </BorderPane>

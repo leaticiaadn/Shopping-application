@@ -112,11 +112,14 @@ public class UserController {
 
             stmt.setString(1, username);
             int rowsAffected = stmt.executeUpdate();
-
+            if (rowsAffected > 0) {
+                System.out.println("User supprimé");
+            }
             messageLabel.setText(rowsAffected > 0
                     ? "Utilisateur supprimé : " + username
                     : "Aucun utilisateur supprimé. Vérifiez les données.");
             messageLabel.setVisible(true);
+
 
         } catch (SQLException e) {
             System.err.println("Erreur lors de la suppression de l'utilisateur : " + e.getMessage());
@@ -171,6 +174,7 @@ public class UserController {
             int rowsAffected = stmt.executeUpdate();
 
             if (rowsAffected > 0) {
+                messageLabel.setStyle("-fx-text-fill: green;");
                 messageLabel.setText("Profil mis à jour avec succès !");
             } else {
                 messageLabel.setText("Erreur : aucune mise à jour effectuée. Vérifiez vos données.");
@@ -183,31 +187,34 @@ public class UserController {
             messageLabel.setVisible(true);
         }
     }
-
-
     // MODIFIER LE MOT DE PASSE
     @FXML
     private void savePassword(ActionEvent event) {
-        if (passwordField.getText().equals(confirmPasswordField.getText())) {
-            String sql = "UPDATE users SET password = ? WHERE username = ?";
-            try (Connection connection = DatabaseConnection.getConnection()){
-                PreparedStatement stmt = connection.prepareStatement(sql);
-                stmt.setString(1, passwordField.getText());
-                stmt.setString(2,UserSession.getCurrentUser());
-                int rowsAffected = stmt.executeUpdate();
-
-                if (rowsAffected > 0) {
-                    messageLabel.setText("Profil mis à jour avec succès !");
-                } else {
-                    messageLabel.setText("Erreur : aucune mise à jour effectuée. Vérifiez vos données.");
-                }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }else{
-            messageLabel.setText("les deux mots de passes ne sont pas cohérents ");
+        if (passwordField.getText().isEmpty()) {
             messageLabel.setVisible(true);
+            messageLabel.setText("Veuillez remplir les champs");
+        }else{
+            if (passwordField.getText().equals(confirmPasswordField.getText())) {
+                String sql = "UPDATE users SET password = ? WHERE username = ?";
+                try (Connection connection = DatabaseConnection.getConnection()){
+                    PreparedStatement stmt = connection.prepareStatement(sql);
+                    stmt.setString(1, passwordField.getText());
+                    stmt.setString(2,UserSession.getCurrentUser());
+                    int rowsAffected = stmt.executeUpdate();
+                    if (rowsAffected > 0) {
+                        messageLabel.setStyle("-fx-text-fill: green;");
+                        messageLabel.setVisible(true);
+                        messageLabel.setText("Profil mis à jour avec succès !");
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }else{
+                messageLabel.setText("les deux mots de passes ne sont pas cohérents ");
+                messageLabel.setVisible(true);
+            }
         }
+
     }
 
 }

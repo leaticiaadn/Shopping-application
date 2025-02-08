@@ -21,14 +21,16 @@
     <center>
         <GridPane alignment="CENTER" hgap="10" vgap="10">
             <TableView fx:id="commandeTable" editable="false" style="-fx-background-color: #f9f9f9; -fx-border-color: #ccc; -fx-border-width: 1px;"
-                       GridPane.columnIndex="0" GridPane.rowIndex="0" maxWidth="900" maxHeight="400" >
+                       GridPane.columnIndex="0" GridPane.rowIndex="0" maxWidth="1000" maxHeight="800" >
                 <columns>
                     <TableColumn fx:id="idColumn" text="ID" prefWidth="150.0" />
                     <TableColumn fx:id="userColumn" text="" visible="false" prefWidth="250.0" />
-                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100.0" />
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="150.0" />
                     <TableColumn fx:id="priceColumn" text="Prix" prefWidth="100.0" />
                     <TableColumn fx:id="dateColumn" text="Date de l'emission de la commande" prefWidth="150.0" />
                     <TableColumn fx:id="detailsColumn" text="Details" prefWidth="150.0" />
+                    <TableColumn fx:id="editColumn" text="Modifier" prefWidth="150.0" />
+                    <TableColumn fx:id="deleteColumn" text="Supprimer" prefWidth="150.0" />
                 </columns>
             </TableView>
         </GridPane>

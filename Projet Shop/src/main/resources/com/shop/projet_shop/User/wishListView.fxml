@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<ScrollPane xmlns="http://javafx.com/javafx"
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.shop.projet_shop.WishListController"
-            prefHeight="400.0" prefWidth="600.0"
-            pannable="true" fitToWidth="false">
-    <content>
-        <VBox fx:id="wishListWrapper"
-              alignment="CENTER"
-              spacing="15"
-              prefWidth="600.0"
-              style="-fx-padding: 30; -fx-alignment: center;">
-            <VBox fx:id="wishListContainer"
-                  alignment="CENTER"
-                  spacing="15">
-            </VBox>
+            prefHeight="600.0" prefWidth="600.0">
+
+    <!-- Notification en haut à gauche -->
+    <top>
+        <VBox fx:id="notificationBox" spacing="5" alignment="TOP_LEFT" minHeight="100">
+            <padding>
+                <Insets top="10" right="10" left="10"/>
+            </padding>
         </VBox>
-    </content>
-</ScrollPane>
+    </top>
+
+    <!-- Contenu principal (ScrollPane) -->
+    <center>
+        <ScrollPane pannable="true" fitToWidth="true">
+            <content>
+                <VBox alignment="CENTER"
+                      prefWidth="600.0"
+                      style="-fx-alignment: center; -fx-padding: 30;">
+
+                    <VBox fx:id="wishListWrapper"
+                          spacing="20"
+                          style="-fx-alignment: center;">
+
+                        <GridPane fx:id="wishListGrid" hgap="10" vgap="10"/>
+
+                    </VBox>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

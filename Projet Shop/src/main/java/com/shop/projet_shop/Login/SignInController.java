@@ -63,7 +63,7 @@ public class SignInController extends AppController {
             UserSession.setCurrentUser(username.getText());
             UserSession.setRole("user");
 
-            showInterface(event); // Charger l'interface utilisateur après inscription réussie
+            showInterface(event);
 
         } catch (SQLException | IOException e) {
             e.printStackTrace();
@@ -115,8 +115,4 @@ public class SignInController extends AppController {
     }
 
 
-    private void showInterface(ActionEvent event) throws IOException {
-        Parent userPage = FXMLLoader.load(getClass().getResource("/com/shop/projet_shop/User/users.fxml"));
-        contentPane.setCenter(userPage);
-    }
 }

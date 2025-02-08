@@ -16,8 +16,6 @@ module com.shop.projet_shop {
 
     opens com.shop.projet_shop to javafx.fxml;
     exports com.shop.projet_shop;
-    exports com.shop.projet_shop.Home;
-    opens com.shop.projet_shop.Home to javafx.fxml;
     exports com.shop.projet_shop.Login;
     opens com.shop.projet_shop.Login to javafx.fxml;
     exports com.shop.projet_shop.Admin;
@@ -26,4 +24,6 @@ module com.shop.projet_shop {
     opens com.shop.projet_shop.User to javafx.fxml;
     exports com.shop.projet_shop.DataBase;
     opens com.shop.projet_shop.DataBase to javafx.fxml;
+    exports com.shop.projet_shop.services;
+    opens com.shop.projet_shop.services to javafx.fxml;
 }

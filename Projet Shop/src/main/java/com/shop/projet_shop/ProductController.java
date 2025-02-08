@@ -2,6 +2,9 @@ package com.shop.projet_shop;
 
 import com.shop.projet_shop.DataBase.Product;
 import com.shop.projet_shop.User.UserSession;
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,15 +17,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
+import java.util.List;
 
 public class ProductController {
 
@@ -42,15 +49,47 @@ public class ProductController {
     private Button addProductButton;
     @FXML
     private ComboBox<String> productComboBox;
+    @FXML
+    private VBox notificationBox;
+    @FXML
+    private Label errorMessage;
 
+    private String role = UserSession.getRole();
 
     public void initialize() {
-        if (UserSession.getRole().equals("user")) {
+        if (role == null) {
+            role = "guest";
+            UserSession.setRole("guest");
+            UserSession.setId(0);
+        }
+        if (role.equals("user") || role.equals("guest")) {
             addProductButton.setVisible(false);
         }
         refreshUI();
-
     }
+    @FXML
+    public void showNotification(String message) {
+        Platform.runLater(() -> {
+            Label notification = new Label(message);
+            notification.getStyleClass().add("notification");
+            notificationBox.getChildren().add(notification);
+            notificationBox.setVisible(true);
+            notificationBox.toFront();
+            PauseTransition pause = new PauseTransition(Duration.seconds(3));
+            pause.setOnFinished(event -> {
+                FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), notification);
+                fadeOut.setFromValue(1);
+                fadeOut.setToValue(0);
+                fadeOut.setOnFinished(e -> {
+                    notificationBox.getChildren().remove(notification);
+                });
+                fadeOut.play();
+            });
+
+            pause.play();
+        });
+    }
+
 
     @FXML
     private void displayProductsInGrid() {
@@ -70,54 +109,60 @@ public class ProductController {
             }
         }
     }
+    @FXML
+    private void displayProductsInGrid(String name) {
+        productGrid.getChildren().clear();
+        ObservableList<Product> products = getProductsFromDatabase(name);
+        int column = 0;
+        int row = 0;
+
+        for (Product product : products) {
+            VBox productBox = createProductBox(product);
+            productGrid.add(productBox, column, row);
+
+            column++;
+            if (column == 4) {
+                column = 0;
+                row++;
+            }
+        }
+    }
 
     private VBox createProductBox(Product product) {
-        VBox productBox = new VBox(10);
+        VBox productBox = new VBox(20);
         productBox.setAlignment(Pos.CENTER);
-
         ImageView productImage = createProductImageView(product);
         Label nameLabel = new Label(product.getName());
         nameLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         Label descriptionLabel = new Label(product.getDescription());
         descriptionLabel.setWrapText(true);
         Label priceLabel = new Label("Prix: " + product.getPrice() + "€");
-
         productBox.getChildren().addAll(productImage, nameLabel, descriptionLabel, priceLabel);
-
-        if (!UserSession.getRole().equals("user")) {
+        if (role.equals("admin")) {
             Label stockLabel = new Label("Stock: " + product.getStock());
             productBox.getChildren().add(stockLabel);
         }
-
         HBox actionsBox = new HBox(20);
         actionsBox.setAlignment(Pos.CENTER);
-
-        if (UserSession.getRole().equals("admin") || UserSession.getRole().equals("manager")) {
-//            StackPane modifyIcon = createIcon("M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z", event -> modifyProduct(product));
-
+        if (role.equals("admin") || role.equals("manager")) {
             StackPane deleteIcon = createIcon(
-                    "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z",
-                    new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            deleteProduct(product); // Appel à la méthode deleteProduct avec l'objet product
-                        }
-                    }
+                    "M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5",
+                    event -> deleteProduct(product)
             );
             deleteIcon.setPrefWidth(40);
             deleteIcon.setPrefHeight(40);
 
             actionsBox.getChildren().addAll(deleteIcon);
         }
-
-        if (UserSession.getRole().equals("user")) {
-            StackPane buyIcon = createIcon("M8 1.5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h2zM4.5 9.5h1v3h-1v-3zM5.5 10v2h-1v-2h1z", event -> buyProduct(product,UserSession.getId()));
-
-            StackPane wishlistIcon = createIcon("M5 3l1 1 3-3 3 3 1-1-4-4-4 4z", event -> addToWishlist(product));
-
-            actionsBox.getChildren().addAll(buyIcon, wishlistIcon);
+        if (role.equals("guest") || role.equals("user")) {
+            StackPane buyIcon = createIcon("M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0", event -> buyProduct(product, UserSession.getId()));
+            if (role.equals("user")){
+                StackPane wishlistIcon = createIcon("m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15", event -> addToWishlist(product));
+                actionsBox.getChildren().addAll(buyIcon, wishlistIcon);
+            }else{
+                actionsBox.getChildren().addAll(buyIcon);
+            }
         }
-
         productBox.getChildren().add(actionsBox);
 
         return productBox;
@@ -127,46 +172,33 @@ public class ProductController {
         StackPane icon = new StackPane();
         icon.setOnMouseClicked(onClickAction);
         icon.getStyleClass().add("circle-icon");
-        icon.setMaxSize(40, 40);
-
         SVGPath svgPath = new SVGPath();
         svgPath.setContent(svgContent);
         svgPath.setFill(javafx.scene.paint.Color.BLACK);
-        svgPath.setScaleX(1.5);
-        svgPath.setScaleY(1.5);
-
+        svgPath.setScaleX(2);
+        svgPath.setScaleY(2);
         icon.getChildren().add(svgPath);
+        icon.setPrefWidth(40);
+        icon.setPrefHeight(40);
+
         return icon;
     }
 
     private ImageView createProductImageView(Product product) {
         String imagePath = "/com/shop/projet_shop/Images/" + product.getImagePath();
-        System.out.println(imagePath);
         URL imageUrl = getClass().getResource(imagePath);
 
         ImageView productImage = new ImageView();
         productImage.setFitWidth(200);
         productImage.setFitHeight(200);
-
-        if (imageUrl != null) {
-            productImage.setImage(new Image(imageUrl.toExternalForm()));
-        } else {
-            loadDefaultImage(productImage);
-        }
+        productImage.setImage(new Image(imageUrl.toExternalForm()));
 
         return productImage;
     }
 
-    private void loadDefaultImage(ImageView productImage) {
-        URL defaultImageUrl = getClass().getResource("/com/shop/projet_shop/Images/default.jpg");
-        if (defaultImageUrl != null) {
-            productImage.setImage(new Image(defaultImageUrl.toExternalForm()));
-        }
-    }
-
     private ObservableList<Product> getProductsFromDatabase() {
         ObservableList<Product> products = FXCollections.observableArrayList();
-        String sql = "SELECT id,name, description, price, stock_quantity, created_at, image_path FROM products";
+        String sql = "SELECT id, name, description, price, stock_quantity, created_at, image_path FROM products";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql);
@@ -184,7 +216,33 @@ public class ProductController {
                 ));
             }
         } catch (SQLException e) {
-            showErrorAlert("Erreur lors de la récupération des produits", e.getMessage());
+            System.out.println("Erreur lors de la récupération des produits "+ e.getMessage());
+        }
+
+        return products;
+    }
+
+    private ObservableList<Product> getProductsFromDatabase(String productname) {
+        ObservableList<Product> products = FXCollections.observableArrayList();
+        String sql = "SELECT id, name, description, price, stock_quantity, created_at, image_path FROM products WHERE name LIKE '%" + productname + "%'";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                products.add(new Product(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getDouble("price"),
+                        rs.getInt("stock_quantity"),
+                        rs.getString("created_at"),
+                        rs.getString("image_path")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des produits "+ e.getMessage());
         }
 
         return products;
@@ -199,6 +257,9 @@ public class ProductController {
             Stage stage = new Stage();
             stage.setTitle("Add Product");
             stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(((Stage) addProductButton.getScene().getWindow()));
+            stage.setOnHidden(event -> refreshUI());
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -207,41 +268,43 @@ public class ProductController {
 
     @FXML
     public void addProduct() {
-        try {
-            String productName = name.getText();
-            String descriptionText = description.getText();
-            int stockQuantity = Integer.parseInt(stockQuantityField.getText());
-            double price = Double.parseDouble(priceTextField.getText());
-            String imagePath = imagePathLabel.getText();
+        if (name.getText().isEmpty() || description.getText().isEmpty() || stockQuantityField.getText().isEmpty() || priceTextField.getText().isEmpty() || imagePathLabel.getText().isEmpty()) {
+            errorMessage.setVisible(true);
+            errorMessage.setText("Veuillez remplir tous les champs");
+        } else {
+            try {
+                String productName = name.getText();
+                String descriptionText = description.getText();
+                int stockQuantity = Integer.parseInt(stockQuantityField.getText()); // Lancer une exception si c'est une valeur non numérique
+                double price = Double.parseDouble(priceTextField.getText()); // Lancer une exception si c'est une valeur non numérique
+                String imagePath = imagePathLabel.getText();
 
-            if (productName.isEmpty() || descriptionText.isEmpty() || imagePath.isEmpty()) {
-                showErrorAlert("Champs obligatoires", "Veuillez remplir tous les champs requis.");
-                return;
-            }
+                String sql = "INSERT INTO products (name, description, price, stock_quantity, created_at, image_path) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, ?)";
+                try (Connection connection = DatabaseConnection.getConnection();
+                     PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            String sql = "INSERT INTO products (name, description, price, stock_quantity, created_at, image_path) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, ?)";
-            try (Connection connection = DatabaseConnection.getConnection();
-                 PreparedStatement stmt = connection.prepareStatement(sql)) {
-
-                stmt.setString(1, productName);
-                stmt.setString(2, descriptionText);
-                stmt.setDouble(3, price);
-                stmt.setInt(4, stockQuantity);
-                stmt.setString(5, imagePath);
-
-                int rowsAffected = stmt.executeUpdate();
-                if (rowsAffected > 0) {
-                    Stage stage = (Stage) name.getScene().getWindow();
-                    stage.close();
-                    refreshUI();
-                } else {
-                    showErrorAlert("Erreur", "Échec de l'ajout du produit.");
+                    stmt.setString(1, productName);
+                    stmt.setString(2, descriptionText);
+                    stmt.setDouble(3, price);
+                    stmt.setInt(4, stockQuantity);
+                    stmt.setString(5, imagePath);
+                    int rowsAffected = stmt.executeUpdate();
+                    if (rowsAffected > 0) {
+                        Stage stage = (Stage) name.getScene().getWindow();
+                        stage.close();
+                        refreshUI();
+                    } else {
+                        System.out.println("Erreur: Échec de l'ajout du produit.");
+                    }
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Erreur: Quantité ou prix incorrects.");
+            } catch (SQLException e) {
+                System.out.println("Erreur lors de l'ajout du produit.");
             }
-        } catch (NumberFormatException | SQLException e) {
-            showErrorAlert("Erreur lors de l'ajout du produit", e.getMessage());
         }
     }
+
 
     @FXML
     public void deleteProduct(Product product) {
@@ -252,33 +315,32 @@ public class ProductController {
             stmt.setString(1, product.getName());
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                showInfoAlert("Succès", "Produit supprimé avec succès.");
+                showNotification("Produit supprimé avec succès.");
                 refreshUI();
             } else {
-                showErrorAlert("Erreur", "Échec de la suppression du produit.");
+                showNotification("Échec de la suppression du produit.");
             }
         } catch (SQLException e) {
-            showErrorAlert("Erreur lors de la suppression", e.getMessage());
+            System.out.println("Erreur lors de la suppression "+ e.getMessage());
         }
     }
+
     private void buyProduct(Product product, int userId) {
         String query = "INSERT INTO panier (user_id, product_id, quantity) " +
                 "VALUES (?, ?, 1) " +
                 "ON DUPLICATE KEY UPDATE quantity = quantity + 1;";
 
-        try (Connection connection = DatabaseConnection.getConnection(); // Remplacez par votre méthode pour obtenir une connexion
+        try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            // Remplacer les placeholders avec les valeurs correspondantes
-            preparedStatement.setInt(1, userId);  // ID de l'utilisateur
-            preparedStatement.setInt(2, product.getId()); // ID du produit
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, product.getId());
 
-            int rowsAffected = preparedStatement.executeUpdate(); // Exécuter la requête
-
+            int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Produit ajouté au panier avec succès.");
+                showNotification("Produit ajouté au panier avec succès.");
             } else {
-                System.out.println("Erreur lors de l'ajout du produit au panier.");
+                showNotification("Erreur lors de l'ajout du produit au panier.");
             }
 
         } catch (SQLException e) {
@@ -286,13 +348,10 @@ public class ProductController {
             System.out.println("Erreur lors de l'ajout du produit au panier.");
         }
     }
+
     private void addToWishlist(Product product) {
         int userId = UserSession.getId();
-        System.out.println(userId);
-
-        // Vérification si le produit est déjà dans la wishlist de l'utilisateur
         String checkQuery = "SELECT COUNT(*) FROM wishlist WHERE user_id = ? AND product_id = ?";
-
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement checkStmt = connection.prepareStatement(checkQuery)) {
 
@@ -301,53 +360,37 @@ public class ProductController {
 
             ResultSet resultSet = checkStmt.executeQuery();
             if (resultSet.next() && resultSet.getInt(1) > 0) {
-                // Si un doublon est trouvé
-                System.out.println("Ce produit est déjà dans votre wishlist.");
-                return; // On quitte la méthode sans ajouter de doublon
+                showNotification("Ce produit est déjà dans votre wishlist.");
+                return;
             }
 
-            // Si aucune ligne n'est retournée, le produit peut être ajouté à la wishlist
             String insertQuery = "INSERT INTO wishlist (user_id, product_id, added_at) VALUES (?, ?, ?)";
             try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
                 insertStmt.setInt(1, userId);
                 insertStmt.setInt(2, product.getId());
                 insertStmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
                 insertStmt.executeUpdate();
-                System.out.println("Produit ajouté à la wishlist.");
+                showNotification("Produit ajouté à la wishlist.");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Erreur de base de données : " + e.getMessage());
+            showNotification("Erreur de base de données : " + e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @FXML
     public void selectImage() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Sélectionner une image");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
-
-        File selectedFile = fileChooser.showOpenDialog(null);
+        Stage stage = (Stage) imagePathLabel.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
             imagePathLabel.setText(selectedFile.getName());
             saveImage(selectedFile);
         } else {
-            showErrorAlert("Aucun fichier sélectionné", "Veuillez sélectionner une image valide.");
+            errorMessage.setText("Aucun fichier sélectionné. Veuillez sélectionner une image valide.");
         }
     }
 
@@ -359,10 +402,29 @@ public class ProductController {
             Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             System.out.println("Image copiée avec succès : " + targetFile.getAbsolutePath());
         } catch (IOException e) {
-            showErrorAlert("Erreur lors de la copie de l'image", e.getMessage());
+            System.out.println("Erreur lors de la copie de l'image" +  e.getMessage());
         }
     }
 
+    private ObservableList<String> getProductNames(String searche) {
+        ObservableList<String> products = FXCollections.observableArrayList();
+        String sql = "SELECT name FROM products WHERE name LIKE '%" + searche + "%'";
+        System.out.println(sql);
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                System.out.println(rs.getString("name"));
+                products.add(rs.getString("name"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des noms des produits "+ e.getMessage());
+        }
+
+        return products;
+    }
     private ObservableList<String> getProductNames() {
         ObservableList<String> products = FXCollections.observableArrayList();
         String sql = "SELECT name FROM products";
@@ -376,7 +438,7 @@ public class ProductController {
             }
 
         } catch (SQLException e) {
-            showErrorAlert("Erreur lors de la récupération des noms des produits", e.getMessage());
+            System.out.println("Erreur lors de la récupération des noms des produits " + e.getMessage());
         }
 
         return products;
@@ -390,18 +452,16 @@ public class ProductController {
             displayProductsInGrid();
         }
     }
-
-    private void showErrorAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setContentText(content);
-        alert.showAndWait();
+    public void refreshUI(String search) {
+        if (productComboBox != null) {
+            productComboBox.setItems(getProductNames(search));
+            System.out.println("test1");
+        }
+        if (productGrid != null) {
+            displayProductsInGrid(search);
+            System.out.println("test2");
+        }
     }
 
-    private void showInfoAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
+
 }

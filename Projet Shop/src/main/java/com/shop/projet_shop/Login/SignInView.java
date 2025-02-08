@@ -12,8 +12,7 @@ public class SignInView {
     private Parent view;
 
     public SignInView() throws IOException {
-        URL url = new File("C:/Users/Leati/OneDrive/Documents/Master1 MIAGE/Programmation Objet/Projet/Shopping-application/Projet Shop/src/main/resources/com/shop/projet_shop/Login/signin.fxml").toURI().toURL();
-        this.view =  FXMLLoader.load(url);
+        this.view = FXMLLoader.load(getClass().getResource("/com/shop/projet_shop/Login/signin.fxml"));
 
     }
 

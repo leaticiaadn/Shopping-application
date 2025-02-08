@@ -22,7 +22,7 @@
     <Label text="Adresse" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
     <TextField fx:id="adresseField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
 
-    <Label fx:id="messageLabel" GridPane.rowIndex="5" GridPane.columnIndex="1" text="" style="-fx-text-fill: #155724; -fx-font-size: 14px; -fx-font-weight: bold;" />
+    <Label fx:id="messageLabel" GridPane.rowIndex="5" GridPane.columnIndex="1" text="" style="-fx-text-fill: #d70e0e; -fx-font-size: 14px; -fx-font-weight: bold;" />
 
 
 

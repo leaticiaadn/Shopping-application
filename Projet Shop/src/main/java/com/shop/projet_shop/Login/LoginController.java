@@ -1,5 +1,6 @@
 package com.shop.projet_shop.Login;
 
+import com.shop.projet_shop.App;
 import com.shop.projet_shop.AppController;
 import com.shop.projet_shop.DatabaseConnection;
 import com.shop.projet_shop.User.UserSession;
@@ -20,8 +21,6 @@ import java.sql.SQLException;
 
 public class LoginController extends AppController {
 
-    @FXML
-    private BorderPane contentPane;
 
     @FXML
     private TextField user;
@@ -105,8 +104,5 @@ public class LoginController extends AppController {
         }
     }
 
-    private void showInterface(ActionEvent event) throws IOException {
-        Parent managerPage = FXMLLoader.load(getClass().getResource("/com/shop/projet_shop/User/users.fxml"));
-        contentPane.setCenter(managerPage);
-    }
+
 }
